@@ -1,0 +1,31 @@
+
+<%= error_messages_for 'book' %>
+
+<p><label for="book_title">Nosaukums:</label><br/>
+<%= text_field 'book', 'title' %></p>
+<p><label for="book_publisher">Firma</label><br/>
+
+<%= collection_select :book, :publisher_id, @publishers, :id, :name %></p>
+<p><label for="book[author_ids][]">Šuvēji:</label><br/>
+<%= select_tag 'book[author_ids][]',
+options_from_collection_for_select(@authors, :id, :name,
+@book.authors.collect{|author| author.id}),
+{ :multiple => true, :size => 5 } %> </p>
+
+<p><label for="book_published_at">Pievienots:</label><br/>
+<%= datetime_select 'book', 'published_at' %></p>
+
+<p><label for="book_isbn">Kods</label><br/>
+<%= text_field 'book', 'isbn' %></p>
+
+<p><label for="book_blurb">Apraksts:</label><br/>
+<%= text_area 'book', 'blurb' %></p>
+
+<p><label for="book_price">Cena:</label><br/>
+<%= text_field 'book', 'price' %></p>
+
+<p><label for="book_page_count">Garums(cm):</label><br/>
+<%= text_field 'book', 'page_count' %></p>
+
+<p><label for="book_cover_image">Attēls:</label><br/>
+<%= file_field 'book', "cover_image" %></p>

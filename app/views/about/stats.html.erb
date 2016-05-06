@@ -1,0 +1,4 @@
+<h1>Statistika</h1>
+<%= pie_chart Book.group(:publisher_id).count %>
+
+<%= bar_chart Book.group(:publisher_id).sum(:price) %>

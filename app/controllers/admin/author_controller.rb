@@ -1,0 +1,44 @@
+class Admin::AuthorController < ApplicationController
+def new
+@author = Author.new
+@page_title = 'Pievienot jaunu šuvēju'
+end
+def create
+@author = Author.new(params[:author])
+if @author.save
+flash[:notice] = "Šuvēja(s) #{@author.name} veiksmīgi pievienota(s)."
+redirect_to :action => 'index'
+else
+@page_title = 'Izveidot jaunu šuvēju'
+render :action => 'new'
+end
+end
+def edit
+@author = Author.find(params[:id])
+@page_title = 'Edit author'
+end
+def update
+@author = Author.find(params[:id])
+if @author.update_attributes(params[:author])
+flash[:notice] = 'Šuvēja(s) veiksmīgi atjaunota(s).'
+redirect_to :action => 'show', :id => @author
+else
+@page_title = 'Rediģēt'
+render :action => 'edit'
+end
+end
+def destroy
+@author = Author.find(params[:id])
+flash[:notice] = "Veiksmīgi noņemts šuvējs #{@author.name}"
+@author.destroy
+redirect_to :action => 'index'
+end
+def show
+@author = Author.find(params[:id])
+@page_title = @author.name
+end
+def index
+@authors = Author.all
+@page_title = 'Šuvēju saraksts'
+end
+end

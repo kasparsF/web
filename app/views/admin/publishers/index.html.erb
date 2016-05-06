@@ -1,0 +1,19 @@
+<h1>Firmu saraksts</h1>
+<table>
+<tr>
+<th>Nosaukums</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+<% @publishers.each do |publisher| %>
+<tr>
+<td><%= publisher.name %></td>
+<td><%= link_to 'Parādīt', :action => 'show', :id => publisher %></td>
+<td><%= link_to 'Rediģēt', :action => 'edit', :id => publisher %></td>
+<td><%= button_to 'Dzēst!', {:action => 'destroy', :id => publisher}, method: :delete, data: {confirm: "Vai esat pārliecināts??"} %></td>
+</tr>
+<% end %>
+</table>
+<br />
+<%= link_to 'Jauna firma', :action => 'new' %>

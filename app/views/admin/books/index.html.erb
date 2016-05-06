@@ -1,0 +1,24 @@
+<table>
+	<tr>
+		<th><a href="?sort_by=publisher_id">Firma</a></th>
+		<th><a href="?sort_by=title">Nosaukums</a></th>
+		<th><a href="?sort_by=isbn">Kods</a></th>
+		<th colspan="3"></th>
+	</tr>
+<% for book in @books %>
+	<tr>
+		<td><%=h book.publisher.name %></td>
+		<td><%=h book.title %></td>
+		<td><%=h book.isbn %></td>
+		<td><%= link_to 'Parādīt', :action => 'show', :id => book %></td>
+		<td><%= link_to 'Rediģēt', :action => 'edit', :id => book %></td>
+		<td><%= button_to 'Dzēst!', {:action => 'destroy', :id => book}, method: :delete, data: {confirm: "Vai esat pārliecināts??"} %></td>
+		
+	</tr>
+<% end %>
+</table>
+<%= will_paginate @books %>
+<br />
+<%= link_to 'Jauna kleita', :action => 'new' %>
+
+

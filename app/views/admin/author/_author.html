@@ -1,0 +1,9 @@
+<tr>
+<td><%= link_to author.name, :action => 'show', :id => author %></td>
+<td><%= link_to 'Rediģēt', :action => 'edit', :id => author %></td>
+<td>
+<%= button_to 'Dzēst!', {:action => 'destroy', :id => author},
+ method: :delete, data: {confirm: "Vai esat pārliecināts??"} %>
+</td>
+</tr>
+

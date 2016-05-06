@@ -1,0 +1,27 @@
+<dl>
+<dt>Nosaukums</dt>
+<dd><%= @book.title %></dd>
+<dt>Firma</dt>
+<dd><%= @book.publisher.name %></dd>
+<dt>Pievienots</dt>
+<dd><%= @book.published_at.strftime("%m/%d/%Y at %I:%M%p") %></dd>
+<dt>Šuvējs</dt>
+<dd><%= @book.authors.collect{|author| author.name }.join(', ') %></dd>
+<dt>Kods</dt>
+<dd><%= @book.isbn %></dd>
+<dt>Apraksts</dt>
+<dd><%= @book.blurb %></dd>
+<dt>Cena</dt>
+<dd><%= @book.price %></dd>
+<dt>Garums(cm)</dt>
+<dd><%= @book.page_count %></dd>
+<dt>Attēls</dt>
+<% if @book.cover_image.nil? %>
+<dd>N/A</dd>
+<% else %>
+<dd><%= image_tag @book.cover_image.url %></dd>
+<% end %>
+</dl>
+
+<p><%= link_to "Rediģēt", :action => "edit", :id => @book %> |
+<%= link_to "Atpakaļ", :action => "index" %></p>

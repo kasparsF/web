@@ -1,0 +1,8 @@
+<h1>Kleits rediģēšana</h1>
+<%= form_tag({:action => 'update', :id => @book},
+{:multipart => true, :method => :put}) do %>
+<%= render :partial => 'form' %>
+<%= submit_tag 'Apstiprināt' %>
+<% end %>
+<%= link_to 'Parādīt', :action => 'show', :id => @book %> |
+<%= link_to 'Atpakaļ', :action => 'index' %>

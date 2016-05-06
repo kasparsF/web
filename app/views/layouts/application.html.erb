@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title><%= @page_title || 'Emporium' %></title>
+<%= stylesheet_link_tag "application", media: "all",
+"data-turbolinks-track" => true %>
+<%= javascript_include_tag 'jquery-1.4.3.js', 'rails', 'application',
+"data-turbolinks-track" => true %>
+<%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
+<%= csrf_meta_tags %>
+</head>
+
+<body> <div id="header">
+<h1 id="logo">Kleitas TEV</h1>
+<h2 id="slogan">Apģērbu interneta veikals</h2>
+</div>
+
+<article>
+<ul>
+<h2><br><br><br><li><a href="/admin/author"><%=t :author %></a></li><hr>
+<li><a href="/admin/publishers"><%=t :manufacturer %></a></li><hr>
+<li><a href="/admin/books"><%=t :book %></a></li><hr>
+<li><a href="/"><%=t :catalog %></a></li><hr>
+<li><a href="/about/stats"><%=t :statistics %></a></li><hr>
+<li><a href="/about/index"><%=t :about %></a></li><hr>
+</h2>
+</ul><br>
+<%= image_tag("dress.jpg", :alt => "dress", class: "images") %>
+</article>
+
+<div id="content">
+<%= "<h1>#{@page_title}</h1>".html_safe if @page_title %>
+<% if flash[:notice] %>
+<div id="notice">
+<%= flash[:notice] %>
+</div>
+<% end %>
+<%= yield %>
+</div>
+
+
+
+<% if @cart %>
+<div id="shopping_cart">
+<%= render :partial => "cart/cart" %>
+</div>
+<%= drop_receiving_element("shopping_cart", :url =>
+{ :controller => "cart", :action => "add" }) %>
+<% end %>
+<div id="footer">
+&copy; 2016 @KFišers
+</div>
+</body>
+</html>

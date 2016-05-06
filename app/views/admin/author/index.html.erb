@@ -1,0 +1,9 @@
+<table>
+<tr>
+<th>Vārds</th>
+<th>Rediģēt</th>
+<th>Dzēst</th>
+</tr>
+<%= render :partial => 'author', :collection => @authors %>
+</table>
+<p><%= link_to 'Pievienot jaunu darbinieku', :action => 'new' %></p>

@@ -1,0 +1,6 @@
+<h1>Jauna kleita</h1>
+<%= form_tag( {:action => 'create'}, :multipart => true ) do %>
+<%= render :partial => 'form' %>
+<%= submit_tag 'Pievienot' %>
+<% end %>
+<%= link_to 'Atpakaļ', :action => 'index' %>
